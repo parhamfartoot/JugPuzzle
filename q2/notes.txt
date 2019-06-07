@@ -1,0 +1,18 @@
+Explain how the puzzle package works and how you use
+it to solve your JugPuzzle. Your explanation should convince
+us that you understand inheritance, interfaces as well as how
+the code in solve uses these to solve any puzzle which correctly
+uses the framework.
+
+
+
+
+Puzzle.java goes through every previous state of the puzzle(of Class States{which extends arrays}), and if any of those states(of Class State{one single puzzle}) have been a solve, 
+then it uses the list of the previous states and the move that made it into the current state,
+to Track down all the moves that have led to the solve scenario and then using the printSolution method it print them to the console.
+The class JugPuzzle extends the Class Puzzle, which itself is an abstract class and hence can not be instantiated.
+If none of the states so far have led to a solve, then it uses the method nextStates(States states) in JugPuzzle.java to go through every possible move for the puzzle,
+and for every possible move, using the copy() method it creates a deep copy of the puzzle and applies the move to it and then by adding that puzzle and that move
+{The move is kept track of with the object Movex, the object implement Move which is an interface} to the states and keeps track of them in the previousState{Every object State
+representing the previous state has a object State as its previous state attribute unless it the first representation of puzzle which then the previous state attribute would be null}.
+if there aren't any possible moves left, we can conclude that there is no solution to the puzzle.
